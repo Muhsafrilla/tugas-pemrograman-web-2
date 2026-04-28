@@ -12,9 +12,9 @@ class LaptopController extends Controller
      */
     public function index()
     {
-       return view('laptop.index', [
-        'title' => 'Laptop',
-        'laptops' => Laptop::all(),
+        return view('laptop.index', [
+            'title' => 'Laptop',
+            'laptops' => Laptop::all(),
         ]);
     }
 
@@ -65,7 +65,10 @@ class LaptopController extends Controller
      */
     public function edit(Laptop $laptop)
     {
-        //
+        return view('laptop.edit', [
+            'title' => 'Edit Laptop',
+            'laptop' => $laptop,
+        ]);
     }
 
     /**
@@ -73,7 +76,24 @@ class LaptopController extends Controller
      */
     public function update(Request $request, Laptop $laptop)
     {
-        //
+            $validated = $request->validate([
+            'merek' => 'required|max:50',
+            'tipe' => 'required|max:50',
+            'processor' => 'required|max:100',
+            'ram' => 'required|in:4,8,16,32',
+            'harga' => 'required|numeric',
+    ], [
+            'merek.required' => 'Merek tidak boleh kosong',
+            'merek.max' => 'Merek tidak boleh lebih dari :max karakter',
+            'tipe.required' => 'Tipe tidak boleh kosong',
+            'tipe.max' => 'Tipe tidak boleh lebih dari :max karakter',
+            'processor.required' => 'Processor tidak boleh kosong',
+            'ram.required' => 'Ram tidak boleh kosong',
+            'harga.required' => 'Harga tidak boleh kosong',
+    ]);
+
+    $laptop->update($validated);
+    return to_route('laptop.index')->withSuccess('Data laptop berhasil diubah');
     }
 
     /**

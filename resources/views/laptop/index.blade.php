@@ -19,6 +19,7 @@
                 {{ $laptop->processor }} --
                 {{ $laptop->ram }} --
                 {{ $laptop->harga }}
+                <a class="btn btn-warning btn-sm" href="{{ route('laptop.edit', $laptop) }}" role="button">Edit</a>
             </li>
         @endforeach
     </ul>
