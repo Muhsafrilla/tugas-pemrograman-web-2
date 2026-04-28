@@ -12,7 +12,10 @@ class LaptopController extends Controller
      */
     public function index()
     {
-       //
+       return view('laptop.index', [
+        'title' => 'Laptop',
+        'laptops' => Laptop::all(),
+        ]);
     }
 
     /**
@@ -20,7 +23,7 @@ class LaptopController extends Controller
      */
     public function create()
     {
-        //
+        return view('laptop.create', ['title' => 'Create Laptop']);
     }
 
     /**
