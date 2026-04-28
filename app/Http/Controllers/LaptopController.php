@@ -14,7 +14,7 @@ class LaptopController extends Controller
     {
         return view('laptop.index', [
             'title' => 'Laptop',
-            'laptops' => Laptop::all(),
+            'laptops' => Laptop::latest()->get(),
         ]);
     }
 
@@ -101,6 +101,7 @@ class LaptopController extends Controller
      */
     public function destroy(Laptop $laptop)
     {
-        //
+        $laptop->delete($laptop);
+        return to_route('laptop.index')->withSuccess('Data laptop berhasil dihapus');
     }
 }

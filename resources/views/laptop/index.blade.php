@@ -20,6 +20,13 @@
                 {{ $laptop->ram }} --
                 {{ $laptop->harga }}
                 <a class="btn btn-warning btn-sm" href="{{ route('laptop.edit', $laptop) }}" role="button">Edit</a>
+                <form action="{{ route('laptop.destroy', $laptop) }}" method="POST" class="d-inline">
+                    @method('DELETE')
+                    @csrf
+
+                    <button type="submit" class="btn btn-danger btn-sm"
+                        onclick="return confirm('Anda Yakin')">Delete</button>
+                </form>
             </li>
         @endforeach
     </ul>

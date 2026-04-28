@@ -10,3 +10,4 @@ Route::get('/laptop/create', [LaptopController::class, 'create'])->name('laptop.
 Route::post('/laptop/store', [LaptopController::class, 'store'])->name('laptop.store');
 Route::get('/laptop/{laptop}/edit', [LaptopController::class, 'edit'])->name('laptop.edit');
 Route::put('/laptop/{laptop}', [LaptopController::class, 'update'])->name('laptop.update');
+Route::delete('/laptop/{laptop}', [LaptopController::class, 'destroy'])->name('laptop.destroy');
