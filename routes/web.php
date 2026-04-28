@@ -7,5 +7,9 @@ Route::get('/', function () {
 });
 
 Route::get('/laptop', function () {
-    return view('laptop.index');
+    return view('laptop.index', ['title' => 'Laptop']);
+});
+
+Route::get('/laptop/create', function () {
+    return view('laptop.create', ['title' => 'Create Laptop']);
 });
