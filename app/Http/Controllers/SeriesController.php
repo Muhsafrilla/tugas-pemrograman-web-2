@@ -105,6 +105,8 @@ class SeriesController extends Controller
      */
     public function destroy(Series $series)
     {
-        //
+        $series->delete();
+
+    return redirect()->route('series.index')->with('success', 'Data berhasil dihapus!');
     }
 }
