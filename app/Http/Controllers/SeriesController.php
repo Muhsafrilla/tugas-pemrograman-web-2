@@ -74,7 +74,11 @@ class SeriesController extends Controller
      */
     public function edit(Series $series)
     {
-        //
+        return view('series.edit', [
+        'title'  => 'Edit Series',
+        'series' => $series,
+        'brands' => \App\Models\Brand::all(),
+    ]);
     }
 
     /**
@@ -82,7 +86,18 @@ class SeriesController extends Controller
      */
     public function update(Request $request, Series $series)
     {
-        //
+            $validated = $request->validate([
+        'nama_series'     => 'required|string|max:255',
+        'tipe_series'     => 'required|string|max:255',
+        'target_pengguna' => 'required|string|max:255',
+        'tahun_rilis'     => 'required|integer|min:1990|max:' . date('Y'),
+        'generasi'        => 'required|integer',
+        'brand_id'        => 'required|exists:brands,id',
+    ]);
+
+    $series->update($validated);
+
+    return redirect()->route('series.index')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
