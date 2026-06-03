@@ -45,7 +45,7 @@ class BrandController extends Controller
 
     Brand::create($validated);
 
-    return redirect()->route('brand.index')->with('success', 'Brand berhasil ditambahkan!');
+    return redirect()->route('brand.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
@@ -88,6 +88,8 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-        //
+         $brand->delete();
+
+    return redirect()->route('brand.index')->with('success', 'Data berhasil dihapus!');
     }
 }

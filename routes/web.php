@@ -16,5 +16,3 @@ Route::delete('/laptop/{laptop}', [LaptopController::class, 'destroy'])->name('l
 
 Route::resource('brand', BrandController::class);
 Route::resource('series', SeriesController::class);
-Route::get('/brand/create', [BrandController::class, 'create'])->name('brand.create');
-Route::post('/brand/store', [BrandController::class, 'store'])->name('brand.store');
