@@ -19,12 +19,12 @@ class SeriesFactory extends Factory
     public function definition(): array
     {
         return [
-            'nama_series' => fake ()->name(),
-            'tipe_series' => fake ()->name(),
-            'target_pengguna' => fake ()->name(),
-            'tahun_rilis' => fake ()->name(),
-            'generasi' => fake ()->name(),
-            'brand_id' => Brand::inRandomOrder()->first()->id,
-        ];
+        'nama_series'     => fake()->randomElement(['Legion', 'ThinkPad', 'IdeaPad', 'ROG', 'ZenBook', 'TUF', 'Pavilion', 'Spectre', 'Envy', 'Aspire', 'Predator', 'Swift', 'XPS', 'Inspiron', 'Vivobook']),
+        'tipe_series'     => fake()->randomElement(['Gaming', 'Business', 'Ultrabook', 'Budget', 'Creator']),
+        'target_pengguna' => fake()->randomElement(['Pelajar', 'Profesional', 'Gamer', 'Desainer']),
+        'tahun_rilis'     => fake()->numberBetween(2000, 2024),
+        'generasi'        => fake()->numberBetween(1, 13),
+        'brand_id'        => Brand::inRandomOrder()->first()->id,
+    ];
     }
 }

@@ -26,7 +26,7 @@ class SeriesController extends Controller
 
     return view('series.index', [
         'title'   => 'Series',
-        'seriess' => $series->paginate(300)->withQueryString(),
+        'seriess' => $series->paginate(8)->withQueryString(),
         'brands'  => \App\Models\Brand::all(), // untuk dropdown filter
     ]);
     }
@@ -66,7 +66,10 @@ class SeriesController extends Controller
      */
     public function show(Series $series)
     {
-        //
+        return view('series.show', [
+        'title'  => 'Detail Series',
+        'series' => $series,
+    ]);
     }
 
     /**
