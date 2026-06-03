@@ -21,5 +21,6 @@ class SeriesSeeder extends Seeder
     Series::create(['brand_id' => 3, 'nama_series' => 'Spectre',  'tipe_series' => 'Ultrabook', 'target_pengguna' => 'Profesional', 'tahun_rilis' => 2012, 'generasi' => 5]);
     Series::create(['brand_id' => 4, 'nama_series' => 'Aspire',   'tipe_series' => 'Casual',    'target_pengguna' => 'Pelajar',     'tahun_rilis' => 1999, 'generasi' => 6]);
     Series::create(['brand_id' => 4, 'nama_series' => 'Predator', 'tipe_series' => 'Gaming',    'target_pengguna' => 'Gamer',       'tahun_rilis' => 2008, 'generasi' => 5]);
+    Series::create(['brand_id' => 4, 'nama_series' => 'MSI',      'tipe_series' => 'Gaming',    'target_pengguna' => 'Gamer',       'tahun_rilis' => 2009, 'generasi' => 9]);
     }
 }

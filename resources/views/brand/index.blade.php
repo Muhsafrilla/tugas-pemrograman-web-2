@@ -10,10 +10,22 @@
 
     <a class="btn btn-primary mb-3" href="{{ route('brand.create') }}" role="button">Create</a>
 
+    <form action="">
+        <div class="row g-3 mb-3">
+            <div class="col-md-8">
+                <input type="text" class="form-control" id="keyword" name="keyword"
+                    placeholder="seacrh brand name ...">
+            </div>
+            <div class="col md-4">
+                <button type="submit" class="btn btn-success">Search</button>
+            </div>
+        </div>
+    </form>
+
     <ul class="list-group">
         @foreach ($brands as $brand)
             <li class="list-group-item">
-                {{ $loop->iteration }}.
+                {{ $brands->firstItem() + $loop->index }}.
                 {{ $brand->nama_brand }} --
                 {{ $brand->negara_asal }} --
                 {{ $brand->tahun_berdiri }}
@@ -28,5 +40,6 @@
             </li>
         @endforeach
     </ul>
+    {{ $brands->links() }}
 
 </x-app>

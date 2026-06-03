@@ -17,5 +17,6 @@ class BrandSeeder extends Seeder
         Brand::create(['nama_brand' => 'ASUS',   'negara_asal' => 'TAIWAN',         'tahun_berdiri' => 1939]);
         Brand::create(['nama_brand' => 'HP',     'negara_asal' => 'TAIWAN',         'tahun_berdiri' => 1976]);
         Brand::create(['nama_brand' => 'ACER',   'negara_asal' => 'AMERIKA SERIKAT','tahun_berdiri' => 1989]);
+        Brand::create(['nama_brand' => 'MSI',    'negara_asal' => 'TAIWAN',         'tahun_berdiri' => 1986]);
     }
 }

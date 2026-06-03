@@ -12,9 +12,15 @@ class BrandController extends Controller
      */
     public function index()
     {
-                return view('brand.index', [
+        $brands = Brand::latest();
+        $keyword = request('keyword');
+        if($keyword) {
+            $brands->where('nama_brand', 'like', '%'. $keyword . '%');
+        }
+
+            return view('brand.index', [
             'title' => 'Brand',
-            'brands' => Brand::latest()->get(),
+            'brands' => $brands->paginate(3),
         ]);
     }
 
