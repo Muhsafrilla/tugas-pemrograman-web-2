@@ -61,7 +61,10 @@ class BrandController extends Controller
      */
     public function edit(Brand $brand)
     {
-        //
+            return view('brand.edit', [
+            'title' => 'Edit Brand',
+            'brand' => $brand,
+        ]);
     }
 
     /**
@@ -69,7 +72,15 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
-        //
+        $validated = $request->validate([
+        'nama_brand'    => 'required|string|max:255',
+        'negara_asal'   => 'required|string|max:255',
+        'tahun_berdiri' => 'required|integer|min:1800|max:' . date('Y'),
+    ]);
+
+    $brand->update($validated);
+
+    return redirect()->route('brand.index')->with('success', 'Data berhasil diupdate!');
     }
 
     /**
