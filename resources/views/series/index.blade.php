@@ -44,7 +44,7 @@
                 {{ $series->tahun_rilis }} --
                 {{ $series->generasi }} --
                 <span class="badge bg-primary">{{ $series->brand->nama_brand }}</span>
-                <a class="btn btn-info btn-sm" href="{{ route('series.show', $series) }}" role="button">Show</a>
+                <a class="btn btn-info btn-sm" href="{{ route('series.show', $series) }}" role="button">Detail</a>
                 <a class="btn btn-warning btn-sm" href="{{ route('series.edit', $series) }}" role="button">Edit</a>
                 <form action="{{ route('series.destroy', $series) }}" method="POST" class="d-inline">
                     @method('DELETE')

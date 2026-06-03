@@ -36,7 +36,10 @@ class SeriesController extends Controller
      */
     public function create()
     {
-        //
+        return view('series.create', [
+        'title'  => 'Tambah Series',
+        'brands' => \App\Models\Brand::all(),
+    ]);
     }
 
     /**
@@ -44,7 +47,18 @@ class SeriesController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+        'nama_series'    => 'required|string|max:255',
+        'tipe_series'    => 'required|string|max:255',
+        'target_pengguna'=> 'required|string|max:255',
+        'tahun_rilis'    => 'required|integer|min:1990|max:' . date('Y'),
+        'generasi'       => 'required|integer',
+        'brand_id'       => 'required|exists:brands,id',
+    ]);
+
+    Series::create($validated);
+
+    return redirect()->route('series.index')->with('success', 'Data berhasil ditambahkan!');
     }
 
     /**
