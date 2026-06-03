@@ -12,10 +12,23 @@ class SeriesController extends Controller
      */
     public function index()
     {
-            return view('series.index', [
-            'title' => 'Series',
-            'seriess' => Series::latest()->get(),
-        ]);
+    $series = Series::with('brand')->latest();
+    $keyword = request('keyword');
+    $brand_id = request('brand_id');
+
+    if ($keyword) {
+        $series->where('nama_series', 'like', '%' . $keyword . '%');
+    }
+
+    if ($brand_id) {
+        $series->where('brand_id', $brand_id);
+    }
+
+    return view('series.index', [
+        'title'   => 'Series',
+        'seriess' => $series->paginate(300)->withQueryString(),
+        'brands'  => \App\Models\Brand::all(), // untuk dropdown filter
+    ]);
     }
 
     /**
