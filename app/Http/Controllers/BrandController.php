@@ -29,7 +29,7 @@ class BrandController extends Controller
      */
     public function create()
     {
-        //
+        return view('brand.create', ['title' => 'Create Brand']);
     }
 
     /**
@@ -37,7 +37,15 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validated = $request->validate([
+        'nama_brand'   => 'required|string|max:255',
+        'negara_asal'  => 'required|string|max:255',
+        'tahun_berdiri'=> 'required|integer|min:1800|max:' . date('Y'),
+    ]);
+
+    Brand::create($validated);
+
+    return redirect()->route('brand.index')->with('success', 'Brand berhasil ditambahkan!');
     }
 
     /**
