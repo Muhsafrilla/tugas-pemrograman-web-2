@@ -29,6 +29,7 @@
                 {{ $brand->nama_brand }} --
                 {{ $brand->negara_asal }} --
                 {{ $brand->tahun_berdiri }}
+                <a class="btn btn-info btn-sm" href="{{ route('brand.show', $brand) }}" role="button">Detail</a>
                 <a class="btn btn-warning btn-sm" href="{{ route('brand.edit', $brand) }}" role="button">Edit</a>
                 <form action="{{ route('brand.destroy', $brand) }}" method="POST" class="d-inline">
                     @method('DELETE')

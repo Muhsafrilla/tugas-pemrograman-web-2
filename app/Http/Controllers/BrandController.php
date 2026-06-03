@@ -53,7 +53,10 @@ class BrandController extends Controller
      */
     public function show(Brand $brand)
     {
-        //
+        return view('brand.show', [
+        'title' => 'Detail Brand',
+        'brand' => $brand,
+    ]);
     }
 
     /**
