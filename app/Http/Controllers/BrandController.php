@@ -106,7 +106,7 @@ class BrandController extends Controller
      */
     public function destroy(Brand $brand)
     {
-         $brand->delete();
+        $brand->delete();
 
     return redirect()->route('brand.index')->with('success', 'Data berhasil dihapus!');
     }
@@ -118,5 +118,11 @@ class BrandController extends Controller
         'title' => 'Trash Brand',
         'brands' => $brands,
     ]);
+}
+
+public function restore($id)
+{
+    Brand::onlyTrashed()->findOrFail($id)->restore();
+    return redirect()->route('brand.trash')->with('success', 'Data berhasil direstore!');
 }
 }
