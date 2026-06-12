@@ -110,4 +110,13 @@ class BrandController extends Controller
 
     return redirect()->route('brand.index')->with('success', 'Data berhasil dihapus!');
     }
+
+    public function trash()
+{
+    $brands = Brand::onlyTrashed()->latest()->get();
+    return view('brand.trash', [
+        'title' => 'Trash Brand',
+        'brands' => $brands,
+    ]);
+}
 }

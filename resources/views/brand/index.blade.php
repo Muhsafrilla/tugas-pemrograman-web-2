@@ -9,6 +9,7 @@
     @endsession
 
     <a class="btn btn-primary mb-3" href="{{ route('brand.create') }}" role="button">Create</a>
+    <a class="btn btn-secondary mb-3" href="{{ route('brand.trash') }}" role="button">🗑 Trash</a>
 
     <form action="">
         <div class="row g-3 mb-3">
