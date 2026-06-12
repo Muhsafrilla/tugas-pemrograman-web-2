@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Brand;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class BrandController extends Controller
 {
@@ -37,15 +38,22 @@ class BrandController extends Controller
      */
     public function store(Request $request)
     {
-        $validated = $request->validate([
-        'nama_brand'   => 'required|string|max:255',
-        'negara_asal'  => 'required|string|max:255',
-        'tahun_berdiri'=> 'required|integer|min:1800|max:' . date('Y'),
+    $validated = $request->validate([
+        'nama_brand'    => 'required|string|max:255',
+        'negara_asal'   => 'required|string|max:255',
+        'tahun_berdiri' => 'required|integer|min:1800|max:' . date('Y'),
+        'deskripsi'     => 'nullable|string',
     ]);
 
-    Brand::create($validated);
-
-    return redirect()->route('brand.index')->with('success', 'Data berhasil ditambahkan!');
+    DB::beginTransaction();
+    try {
+        Brand::create($validated);
+        DB::commit();
+        return redirect()->route('brand.index')->with('success', 'Data berhasil ditambahkan!');
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return redirect()->back()->with('error', 'Gagal menambahkan data: ' . $e->getMessage());
+    }
     }
 
     /**

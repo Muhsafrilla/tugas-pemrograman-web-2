@@ -28,6 +28,13 @@
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
+        <div class="mb-3">
+            <label for="deskripsi" class="form-label">Deskripsi</label>
+            <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="3">{{ old('deskripsi') }}</textarea>
+            @error('deskripsi')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
 
         <a class="btn btn-warning" href="{{ route('brand.index') }}" role="button">Cancel</a>
         <button type="submit" class="btn btn-primary">Submit</button>
