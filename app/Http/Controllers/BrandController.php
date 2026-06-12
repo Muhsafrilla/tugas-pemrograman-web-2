@@ -83,15 +83,22 @@ class BrandController extends Controller
      */
     public function update(Request $request, Brand $brand)
     {
-        $validated = $request->validate([
+    $validated = $request->validate([
         'nama_brand'    => 'required|string|max:255',
         'negara_asal'   => 'required|string|max:255',
         'tahun_berdiri' => 'required|integer|min:1800|max:' . date('Y'),
+        'deskripsi'     => 'nullable|string',
     ]);
 
-    $brand->update($validated);
-
-    return redirect()->route('brand.index')->with('success', 'Data berhasil diupdate!');
+    DB::beginTransaction();
+    try {
+        $brand->update($validated);
+        DB::commit();
+        return redirect()->route('brand.index')->with('success', 'Data berhasil diupdate!');
+    } catch (\Exception $e) {
+        DB::rollBack();
+        return redirect()->back()->with('error', 'Gagal mengupdate data: ' . $e->getMessage());
+    }
     }
 
     /**

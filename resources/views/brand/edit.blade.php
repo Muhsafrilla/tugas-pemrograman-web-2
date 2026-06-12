@@ -4,7 +4,7 @@
 
     <form method="POST" action="{{ route('brand.update', $brand->id) }}">
         @csrf
-        @method('PUT') {{-- wajib ada untuk edit --}}
+        @method('PUT')
         <div class="mb-3">
             <label for="nama_brand" class="form-label">Nama Brand</label>
             <input type="text" class="form-control @error('nama_brand') is-invalid @enderror" id="nama_brand"
@@ -26,6 +26,13 @@
             <input type="number" class="form-control @error('tahun_berdiri') is-invalid @enderror" id="tahun_berdiri"
                 name="tahun_berdiri" value="{{ old('tahun_berdiri', $brand->tahun_berdiri) }}">
             @error('tahun_berdiri')
+                <div class="invalid-feedback">{{ $message }}</div>
+            @enderror
+        </div>
+        <div class="mb-3">
+            <label for="deskripsi" class="form-label">Deskripsi</label>
+            <textarea class="form-control @error('deskripsi') is-invalid @enderror" id="deskripsi" name="deskripsi" rows="3">{{ old('deskripsi', $brand->deskripsi) }}</textarea>
+            @error('deskripsi')
                 <div class="invalid-feedback">{{ $message }}</div>
             @enderror
         </div>
