@@ -125,4 +125,10 @@ public function restore($id)
     Brand::onlyTrashed()->findOrFail($id)->restore();
     return redirect()->route('brand.trash')->with('success', 'Data berhasil direstore!');
 }
+
+public function forceDelete($id)
+{
+    Brand::onlyTrashed()->findOrFail($id)->forceDelete();
+    return redirect()->route('brand.trash')->with('success', 'Data berhasil dihapus permanen!');
+}
 }
