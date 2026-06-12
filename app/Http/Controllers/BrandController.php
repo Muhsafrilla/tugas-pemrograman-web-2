@@ -20,7 +20,7 @@ class BrandController extends Controller
 
             return view('brand.index', [
             'title' => 'Brand',
-            'brands' => $brands->paginate(3),
+            'brands' => $brands->paginate(3)->withQueryString(),
         ]);
     }
 

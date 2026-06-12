@@ -29,7 +29,6 @@
             </div>
             <div class="col-md-3">
                 <button type="submit" class="btn btn-success">Search</button>
-                <a href="{{ route('series.index') }}" class="btn btn-secondary">Reset</a>
             </div>
         </div>
     </form>

@@ -14,7 +14,7 @@ class SeriesController extends Controller
     {
     $series = Series::with('brand')->latest();
     $keyword = request('keyword');
-    $brand_id = request('brand_id');
+    $brand_id = request('brand_id');     
 
     if ($keyword) {
         $series->where('nama_series', 'like', '%' . $keyword . '%');

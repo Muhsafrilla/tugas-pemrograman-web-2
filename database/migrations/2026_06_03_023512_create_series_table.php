@@ -18,7 +18,7 @@ return new class extends Migration
             $table->string('target_pengguna');
             $table->integer('tahun_rilis');
             $table->integer('generasi');
-            $table->foreignId('brand_id')->constrained()->cascadeOnDelete();
+            $table->foreignId('brand_id')->constrained()->cascadeOnDelete(); 
             $table->timestamps();
         });
     }
